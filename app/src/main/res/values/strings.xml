@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Selfee</string>
+    <string name="app_name">StarterTemplate</string>
     <string name="login">Login</string>
     <string name="login_to_your_account">Login to your account</string>
     <string name="email">E-mail</string>

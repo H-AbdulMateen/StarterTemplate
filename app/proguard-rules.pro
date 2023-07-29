@@ -20,5 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
--keep class com.lineztech.selfee.data.remote.dto.requests.** { *; }
--keep class com.lineztech.selfee.data.remote.dto.responses.** { *; }
+-keep class com.abdulmateen.startertemplate.data.remote.dto.requests.** { *; }
+-keep class com.abdulmateen.startertemplate.data.remote.dto.responses.** { *; }
