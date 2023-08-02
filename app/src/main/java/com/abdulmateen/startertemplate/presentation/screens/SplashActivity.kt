@@ -50,7 +50,7 @@ fun SplashScreenBox() {
     contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.app_logo_large),
+            painter = painterResource(id = R.drawable.app_logo),
             contentDescription = "SplashBgImage",
             modifier = Modifier
                 .width(200.dp)

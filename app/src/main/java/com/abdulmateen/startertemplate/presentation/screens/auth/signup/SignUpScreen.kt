@@ -92,7 +92,7 @@ fun SignUpScreen(
             ) {
 
                 Image(
-                    painter = painterResource(id = R.drawable.app_logo_large),
+                    painter = painterResource(id = R.drawable.app_logo),
                     contentDescription = "SplashBgImage",
                     modifier = Modifier
                         .width(200.dp)
@@ -100,59 +100,15 @@ fun SignUpScreen(
                     contentScale = ContentScale.FillWidth
                 )
                 Spacer(modifier = Modifier.height(18.dp))
-                val userTypes = arrayListOf("Patient", "Doctor")
-                val selectedUserType = remember { mutableStateOf(userTypes[0]) }
-                val pagerState = rememberPagerState(pageCount = {2})
                 val scope = rememberCoroutineScope()
 
-                LazyRow(
-                    modifier = Modifier
-                        .background(color = White, shape = RoundedCornerShape(8.dp))
-                        .padding(vertical = 2.dp, horizontal = 8.dp)
-                ) {
-                    itemsIndexed(userTypes) { index, item ->
-                        CustomToggleButton(
-                            item = item,
-                            isSelected = selectedUserType.value == item,
-                            onSelectionChange = {
-                                selectedUserType.value = item
-                                scope.launch {
-                                    pagerState.scrollToPage(index)
-                                }
-                            }
-                        )
-                    }
-                }
                 Spacer(modifier = Modifier.height(8.dp))
-                val fling = PagerDefaults.flingBehavior(
-                    state = pagerState,
-                    pagerSnapDistance = PagerSnapDistance.atMost(10)
-                )
-                //Pager
-                HorizontalPager(
-                    state = pagerState,
-                    flingBehavior = fling
-                ) {
-                    if (pagerState.currentPage == 0) {
+
                         CustomerSignUpCard(
                             uiState = uiState,
                             uiEvents = uiEvents,
                             apiEvents = apiEvents
                         )
-                    } else {
-                        SignUpCredentialsCard1(
-                            uiState = uiState,
-                            uiEvents = uiEvents,
-                            apiEvents = apiEvents
-                        )
-                    }
-                }
-
-                LaunchedEffect(key1 = pagerState) {
-                    snapshotFlow { pagerState.currentPage }.collect { pageNumber ->
-                        selectedUserType.value = userTypes[pageNumber]
-                    }
-                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -184,15 +140,6 @@ fun SignUpScreen(
     }
 
 
-}
-
-@Composable
-fun CustomToggleButton(item: String, isSelected: Boolean, onSelectionChange: () -> Unit) {
-    TextRectangleWithBg(
-        text = item, onClick = onSelectionChange,
-        backgroundColor = if (isSelected) MaterialTheme.colorScheme.primary else White,
-        contentColor = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onBackground,
-    )
 }
 
 
