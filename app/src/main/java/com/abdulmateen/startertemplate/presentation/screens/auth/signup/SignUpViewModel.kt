@@ -117,6 +117,18 @@ class SignUpViewModel @Inject constructor() : ViewModel() {
                     confirmPasswordVisibility = !_uiState.value.confirmPasswordVisibility
                 )
             }
+
+            is SignUpUIEvents.UpdateBitmap -> {
+                _uiState.value = _uiState.value.copy(
+                    bitmap = uiEvents.bitmap
+                )
+            }
+
+            is SignUpUIEvents.UpdateDateOfBirth -> {
+                _uiState.value = _uiState.value.copy(
+                    dateOfBirth = uiEvents.selectedDate
+                )
+            }
         }
     }
 

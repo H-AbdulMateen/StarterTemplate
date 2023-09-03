@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusState
@@ -53,6 +55,46 @@ fun TextFieldUnderline(
         },
         keyboardOptions = KeyboardOptions(
             keyboardType = keyboardType
+        )
+    )
+}
+
+
+@Composable
+fun DateTextFieldUnderline(
+    text: String,
+    onTextChange: (String) -> Unit,
+    placeholder: String,
+    modifier: Modifier = Modifier,
+    label: String,
+    hasError: Boolean = false,
+    errorMessage: String = "",
+    onClick: () -> Unit
+) {
+    TextField(
+        value = text,
+        onValueChange = onTextChange,
+        modifier = modifier.clickable(
+            onClick = onClick
+        ),
+        label = { Text(text = label) },
+        placeholder = { Text(text = placeholder) },
+        isError = hasError,
+        supportingText = {
+            Text(
+                text = errorMessage,
+                color = MaterialTheme.colorScheme.error
+            )
+        },
+        readOnly = true,
+        enabled = false,
+        trailingIcon = { Icon(imageVector = Icons.Default.CalendarMonth, contentDescription = "") },
+        colors = TextFieldDefaults.colors(
+            disabledIndicatorColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            disabledTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            disabledTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            disabledPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            disabledLabelColor = MaterialTheme.colorScheme.onSurfaceVariant
         )
     )
 }

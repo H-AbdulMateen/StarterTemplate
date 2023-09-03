@@ -1,6 +1,11 @@
 package com.abdulmateen.startertemplate.presentation.screens.auth.signup
 
+import android.graphics.Bitmap
+
 data class SignUpUIState(
+    val bitmap: Bitmap? = null,
+    val bitmapHasError: Boolean = false,
+    val bitmapError: String = "",
     val fullName: String = "",
     val hasFullNameError: Boolean = false,
     val fullNameError: String = "",
@@ -10,6 +15,9 @@ data class SignUpUIState(
     val phoneNumber: String = "",
     val hasPhoneNumberError: Boolean = false,
     val phoneNumberError: String = "",
+    val dateOfBirth: String = "",
+    val hasDateOfBirthError: Boolean = false,
+    val dateOfBirthError: String = "",
     val address: String = "",
     val hasAddressError: Boolean = false,
     val addressError: String = "",

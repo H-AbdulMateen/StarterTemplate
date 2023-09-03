@@ -1,6 +1,10 @@
 package com.abdulmateen.startertemplate.presentation.screens.auth.signup
 
+import android.graphics.Bitmap
+import com.abdulmateen.startertemplate.presentation.screens.main.profile.ProfileUIEvents
+
 sealed class SignUpUIEvents{
+    data class UpdateBitmap(val bitmap: Bitmap) : SignUpUIEvents()
     data class LoadingStatusChanged(val isLoading: Boolean): SignUpUIEvents()
     data class UpdateFullName(val name: String) : SignUpUIEvents()
     data class UpdateFullNameErrorStatus(val hasError: Boolean, val message: String): SignUpUIEvents()
@@ -18,5 +22,6 @@ sealed class SignUpUIEvents{
     object OnSignUpClick: SignUpUIEvents()
     object UpdatePasswordVisibilityStatus: SignUpUIEvents()
     object UpdateConfirmPasswordVisibilityStatus: SignUpUIEvents()
+    data class UpdateDateOfBirth(val selectedDate: String): SignUpUIEvents()
 
 }
