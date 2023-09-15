@@ -216,8 +216,8 @@ fun LoginCredentialsCard(
             ButtonRectangle(
                 text = stringResource(id = R.string.login),
                 onClick = {
-                          uiEvents(LoginUIEvents.OnLoginClick)
-//                          navController.navigate(NavGraphs.MAIN_GRAPH)
+//                          uiEvents(LoginUIEvents.OnLoginClick)
+                          navController.navigate(NavGraphs.MAIN_GRAPH)
                 },
                 modifier = Modifier.fillMaxWidth()
             )

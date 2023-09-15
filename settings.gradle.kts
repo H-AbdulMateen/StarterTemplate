@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "StarterTemplate"
-include ':app'
+include(":app")
