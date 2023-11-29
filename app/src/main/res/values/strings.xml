@@ -33,11 +33,14 @@
     <string name="city">City</string>
     <string name="save">Save</string>
     <string name="requests">Requests</string>
-    <string name="loading_dots">Loading...</string>
+    <string name="loading_dots">Loading…</string>
     <string name="logout">Logout</string>
     <string name="my_bids">My Bids</string>
     <string name="sorry_there_is_no_data_to_show">Sorry, there is no data to show</string>
     <string name="date_of_birth">Date Of Birth</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="alert">Alert</string>
+    <string name="are_you_sure_to_exit_from_app">Are you sure to exit from app?</string>
+    <string name="yes">Yes</string>
 </resources>

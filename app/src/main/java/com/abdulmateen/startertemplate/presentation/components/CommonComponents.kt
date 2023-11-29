@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Camera
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.PhotoLibrary
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DatePicker
@@ -323,6 +324,39 @@ fun DatePickerDialogSample(
     }
 }
 
+@Composable
+fun DialogConfirmExit(
+    title: String = stringResource(id = R.string.alert),
+    message: String = stringResource(id = R.string.are_you_sure_to_exit_from_app),
+    onConfirm: () -> Unit,
+    onCancel: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text(text = title)
+        },
+        text = {
+            Text(text = message)
+        },
+        confirmButton = {
+            TextButton(
+                onClick = onConfirm
+            ) {
+                Text(stringResource(id = R.string.yes))
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = onCancel
+            ) {
+                Text(stringResource(id = R.string.cancel))
+            }
+        },
+        containerColor = Color.White
+    )
+}
 
 @Preview
 @Composable

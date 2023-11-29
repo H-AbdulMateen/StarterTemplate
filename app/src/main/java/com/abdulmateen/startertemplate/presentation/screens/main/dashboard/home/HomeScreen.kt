@@ -1,8 +1,10 @@
 package com.abdulmateen.startertemplate.presentation.screens.main.dashboard.home
 
 import android.Manifest
+import android.app.Activity
 import android.content.pm.PackageManager
 import android.net.Uri
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -30,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,6 +53,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.abdulmateen.startertemplate.R
 import com.abdulmateen.startertemplate.presentation.components.BasicTextFieldMultiline
 import com.abdulmateen.startertemplate.presentation.components.ButtonRectangle
+import com.abdulmateen.startertemplate.presentation.components.DialogConfirmExit
 import com.abdulmateen.startertemplate.presentation.components.PhotoPickerDialog
 import com.abdulmateen.startertemplate.utils.uriToBitmap
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
@@ -63,6 +67,8 @@ fun HomeScreen(
     apiEvents: MutableSharedFlow<HomeScreenApiEvents>
 ) {
     val context = LocalContext.current
+    val activity = (LocalContext.current as? Activity)
+    
     var selectedImageUri by remember {
         mutableStateOf<Uri?>(null)
     }
@@ -83,6 +89,10 @@ fun HomeScreen(
             }
         }
     )
+
+    var exitConfirmationDialogState by rememberSaveable {
+        mutableStateOf(false)
+    }
     var hasCamPermission by remember {
         mutableStateOf(
             ContextCompat.checkSelfPermission(
@@ -167,6 +177,23 @@ fun HomeScreen(
             )
         }
     )
+
+    BackHandler(true) {
+        exitConfirmationDialogState = true
+    }
+    if (exitConfirmationDialogState) {
+        DialogConfirmExit(
+            onConfirm = {
+                activity?.finish()
+            },
+            onCancel = {
+                exitConfirmationDialogState = false
+            },
+            onDismiss = {
+                exitConfirmationDialogState = false
+            }
+        )
+    }
 }
 
 
