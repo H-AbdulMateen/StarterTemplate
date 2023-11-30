@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -23,6 +24,8 @@ import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerColors
 import androidx.compose.material3.DatePickerDefaults
@@ -41,23 +44,29 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import com.abdulmateen.startertemplate.R
 import com.abdulmateen.startertemplate.domain.models.TextIcon
+import com.abdulmateen.startertemplate.utils.GenericDropdownModel
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.MaterialDialogState
 import com.vanpra.composematerialdialogs.listItems
@@ -356,6 +365,166 @@ fun DialogConfirmExit(
         },
         containerColor = Color.White
     )
+}
+
+
+@Composable
+fun DropdownGeneric(
+    modifier: Modifier = Modifier,
+    list: List<GenericDropdownModel>,
+    selectedItem: String,
+    expanded: Boolean,
+    onDismiss: () -> Unit,
+    onItemClick: (GenericDropdownModel) -> Unit,
+    placeholder: String
+) {
+    var textFieldWidth by remember { mutableStateOf(IntSize.Zero) }
+    Card(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 2.dp
+        ),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        shape = MaterialTheme.shapes.extraSmall,
+        modifier = modifier.onSizeChanged {
+            textFieldWidth = it
+        }
+    ) {
+
+        Box {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = selectedItem.ifEmpty { placeholder },
+                    style = MaterialTheme.typography.labelLarge.copy(color = if (selectedItem.isNotEmpty()) Black else Color.LightGray),
+                    maxLines = 1,
+                    modifier = Modifier.weight(.4f)
+                )
+                Icon(
+                    imageVector = Icons.Default.ArrowDropDown,
+                    contentDescription = "ArrowDropdown",
+                    tint = Black,
+                    modifier = Modifier.weight(.1f)
+                )
+            }
+        }
+
+
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { onDismiss() },
+            modifier = Modifier
+                .then(with(LocalDensity.current) {
+                    Modifier.width(textFieldWidth.width.toDp())
+                })
+                .background(color = Color.White),
+        )
+        {
+            list.forEachIndexed { index, item ->
+                DropdownMenuItem(
+                    text = { Text(text = item.label, color = Black) },
+                    onClick = {
+                        onItemClick(item)
+                        onDismiss()
+                    },
+                    modifier = Modifier.background(color = Color.White)
+                )
+
+            }
+        }
+    }
+}
+
+@Composable
+fun SpacerH2(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.height(2.dp))
+}
+@Composable
+fun SpacerH4(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.height(4.dp))
+}
+@Composable
+fun SpacerH6(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.height(6.dp))
+}
+@Composable
+fun SpacerH8(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.height(8.dp))
+}
+@Composable
+fun SpacerH10(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.height(10.dp))
+}
+@Composable
+fun SpacerH12(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.height(12.dp))
+}
+
+@Composable
+fun SpacerH16(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.height(16.dp))
+}
+@Composable
+fun SpacerW2(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.width(2.dp))
+}
+@Composable
+fun SpacerW4(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.width(4.dp))
+}
+@Composable
+fun SpacerW6(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.width(6.dp))
+}
+@Composable
+fun SpacerW8(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.width(8.dp))
+}
+@Composable
+fun SpacerW10(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.width(10.dp))
+}
+@Composable
+fun SpacerW12(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.width(12.dp))
+}
+
+@Composable
+fun SpacerW16(
+    modifier: Modifier = Modifier
+) {
+    Spacer(modifier = modifier.width(16.dp))
 }
 
 @Preview
