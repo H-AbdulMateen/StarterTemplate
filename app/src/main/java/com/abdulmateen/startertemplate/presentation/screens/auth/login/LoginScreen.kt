@@ -58,12 +58,6 @@ fun LoginScreen(
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.background_image_with_circles),
-                contentDescription = "BackgroundImage",
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.FillBounds
-            )
 
             Column(
                 modifier = Modifier

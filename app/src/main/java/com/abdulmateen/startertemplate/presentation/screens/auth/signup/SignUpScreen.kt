@@ -86,7 +86,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import java.time.Instant
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SignUpScreen(
     navController: NavController,
@@ -100,13 +99,6 @@ fun SignUpScreen(
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.background_image_with_circles),
-                contentDescription = "BackgroundImage",
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.FillBounds
-            )
-
             Column(
                 modifier = Modifier
                     .fillMaxSize()
