@@ -43,4 +43,6 @@
     <string name="alert">Alert</string>
     <string name="are_you_sure_to_exit_from_app">Are you sure to exit from app?</string>
     <string name="yes">Yes</string>
+    <string name="email_placeholder">user@xyz.com</string>
+    <string name="password_placeholder">******</string>
 </resources>

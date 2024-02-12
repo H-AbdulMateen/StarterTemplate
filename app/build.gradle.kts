@@ -77,7 +77,7 @@ dependencies {
     //Splash Screen API
     implementation("androidx.core:core-splashscreen:1.0.1")
     //Material Icons
-    implementation("androidx.compose.material:material-icons-extended:1.6.0")
+    implementation("androidx.compose.material:material-icons-extended:1.6.1")
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -89,7 +89,7 @@ dependencies {
     //Hilt View Model
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     //navigation
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("io.coil-kt:coil-compose:2.4.0")
     //Material Dialog core
     implementation("io.github.vanpra.compose-material-dialogs:core:0.9.0")
