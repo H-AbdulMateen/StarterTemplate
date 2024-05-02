@@ -5,7 +5,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import com.abdulmateen.startertemplate.data.cache.dao.UserDao
-import com.abdulmateen.startertemplate.data.cache.mapper.UserEntityMapper
 import com.abdulmateen.startertemplate.data.remote.RetroService
 import com.abdulmateen.startertemplate.domain.DataState
 import com.abdulmateen.startertemplate.domain.models.User
@@ -19,8 +18,7 @@ import java.lang.Exception
 class MainRepositoryImpl(
     private val retroService: RetroService,
     private val userDao: UserDao,
-    private val dataStore: DataStore<Preferences>,
-    private val userEntityMapper: UserEntityMapper
+    private val dataStore: DataStore<Preferences>
 ): MainRepository {
     override fun login(): Flow<DataState<Boolean>> = flow {
         try {

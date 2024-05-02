@@ -3,7 +3,6 @@ package com.abdulmateen.startertemplate.di
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import com.abdulmateen.startertemplate.data.cache.dao.UserDao
-import com.abdulmateen.startertemplate.data.cache.mapper.UserEntityMapper
 import com.abdulmateen.startertemplate.data.remote.RetroService
 import com.abdulmateen.startertemplate.repository.auth.AuthRepository
 import com.abdulmateen.startertemplate.repository.auth.AuthRepositoryImpl
@@ -24,12 +23,10 @@ object RepositoryModule {
     fun provideAuthRepository(
         retroService: RetroService,
         userDao: UserDao,
-        userEntityMapper: UserEntityMapper,
         dataStore: DataStore<Preferences>
     ): AuthRepository = AuthRepositoryImpl(
         retroService = retroService,
         userDao = userDao,
-        userEntityMapper = userEntityMapper,
         dataStore = dataStore
     )
 
@@ -38,12 +35,10 @@ object RepositoryModule {
     fun provideMainRepository(
         retroService: RetroService,
         userDao: UserDao,
-        userEntityMapper: UserEntityMapper,
         dataStore: DataStore<Preferences>
     ): MainRepository = MainRepositoryImpl(
         retroService = retroService,
         userDao = userDao,
-        userEntityMapper = userEntityMapper,
         dataStore = dataStore
     )
 }

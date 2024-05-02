@@ -4,7 +4,6 @@ import androidx.room.Room
 import com.abdulmateen.startertemplate.MyApplication
 import com.abdulmateen.startertemplate.data.cache.AppDatabase
 import com.abdulmateen.startertemplate.data.cache.dao.UserDao
-import com.abdulmateen.startertemplate.data.cache.mapper.UserEntityMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,9 +29,6 @@ object CacheModule {
         return db.userDao()
     }
 
-    @Singleton
-    @Provides
-    fun provideUserEntity(): UserEntityMapper = UserEntityMapper()
 
 
 }
