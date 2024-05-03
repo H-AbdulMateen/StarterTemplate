@@ -23,6 +23,7 @@ import com.abdulmateen.startertemplate.R
 import com.abdulmateen.startertemplate.presentation.components.BasicTextFieldMultiline
 import com.abdulmateen.startertemplate.presentation.components.BasicTextFieldWhiteBox
 import com.abdulmateen.startertemplate.presentation.components.DateTextFieldUnderline
+import com.abdulmateen.startertemplate.presentation.components.TextFieldOutlinedPassword
 import com.abdulmateen.startertemplate.presentation.components.TextFieldOutlinedPhone
 import com.abdulmateen.startertemplate.presentation.components.TextFieldUnderline
 import com.abdulmateen.startertemplate.presentation.components.TextFieldUnderlineEmail
@@ -107,6 +108,18 @@ fun TextFieldPreviews() {
             onTextChange = { textFieldOutlinedPhone = it },
             placeholder = "+00 000 000 0000",
             label = "+00 000 000 0000",
+            modifier = Modifier.fillMaxWidth()
+        )
+        var textFieldOutlinedPassword by remember { mutableStateOf("") }
+        TextFieldOutlinedPassword(
+            text = textFieldOutlinedPassword,
+            label = stringResource(id = R.string.password),
+            onTextChange = {textFieldOutlinedPassword = it},
+            placeholder = stringResource(id = R.string.password),
+            passwordVisible = passwordVisibility,
+            onClickPasswordVisibility = { passwordVisibility = !passwordVisibility },
+            hasError = false,
+            errorMessage = "Error Message",
             modifier = Modifier.fillMaxWidth()
         )
     }
