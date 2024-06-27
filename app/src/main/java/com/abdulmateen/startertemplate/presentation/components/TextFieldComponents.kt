@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -314,6 +315,59 @@ fun TextFieldOutlinedPhone(
             errorContainerColor = MaterialTheme.colorScheme.errorContainer,
         ),
         visualTransformation = PhoneVisualTransformation(mask = mask, maskNumber = maskNumber),
+        singleLine = true
+    )
+}
+
+@Composable
+fun TextFieldOutlinedPassword(
+    text: String,
+    onTextChange: (String) -> Unit,
+    placeholder: String,
+    modifier: Modifier = Modifier,
+    label: String = "",
+    passwordVisible: Boolean,
+    onClickPasswordVisibility: () -> Unit,
+    hasError: Boolean,
+    errorMessage: String
+) {
+    OutlinedTextField(
+        value = text,
+        onValueChange = onTextChange,
+        modifier = modifier,
+        label = { Text(text = label) },
+        placeholder = { Text(text = placeholder) },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password
+        ),
+        visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+        trailingIcon = {
+            Icon(
+                imageVector = if (passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                contentDescription = "PasswordTrailingIcon",
+                modifier = Modifier.clickable(onClick = onClickPasswordVisibility),
+            )
+        },
+        isError = hasError,
+        supportingText = {
+            Text(
+                text = errorMessage,
+                color = MaterialTheme.colorScheme.error
+            )
+        },
+        leadingIcon = {
+            Icon(imageVector = Icons.Outlined.Lock, contentDescription = "LockIcon",
+                tint = LightGray)
+        },
+        shape = MaterialTheme.shapes.small,
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedContainerColor = Color.Transparent,
+            unfocusedBorderColor = LightGray,
+            unfocusedTrailingIconColor = LightGray,
+            focusedContainerColor = Color.Transparent,
+            focusedTrailingIconColor = Color.Gray,
+            errorContainerColor = MaterialTheme.colorScheme.errorContainer,
+        ),
         singleLine = true
     )
 }
