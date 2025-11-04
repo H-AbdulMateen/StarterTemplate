@@ -5,16 +5,17 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.compose.compiler)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
     namespace = "com.abdulmateen.startertemplate"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.abdulmateen.startertemplate"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
