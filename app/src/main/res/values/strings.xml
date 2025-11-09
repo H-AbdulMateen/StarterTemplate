@@ -45,4 +45,5 @@
     <string name="yes">Yes</string>
     <string name="email_placeholder">user@xyz.com</string>
     <string name="password_placeholder">******</string>
+    <string name="settings">Settings</string>
 </resources>
